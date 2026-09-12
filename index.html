@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="ru" data-lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Սերգո &amp; Նունե — Հարսանիք / Серго &amp; Нуне — Свадьба</title>
+<meta property="og:title" content="Серго и Нуне — свадебное приглашение">
+<meta property="og:description" content="13 ноября 2026 — приглашаем разделить с нами этот день">
+<meta property="og:type" content="website">
+<meta property="og:image" content="no-preview-image.png?v=1">
+<meta name="twitter:card" content="summary">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Playfair+Display:wght@400;500;600&family=Noto+Serif+Armenian:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  :root {
+    --ink: #161513;
+    --charcoal: #0f0e0d;
+    --paper: #f7f6f2;
+    --paper-dim: #efeee9;
+    --card: #ffffff;
+    --ash: #7c776c;
+    --ash-soft: #a6a196;
+    --line: #dcd8cf;
+    --line-strong: #161513;
+  }
+
+  body {
+    background: var(--paper-dim);
+    color: var(--ink);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  html[data-lang="ru"] body { font-family: "Cormorant Garamond", serif; }
+  html[data-lang="hy"] body { font-family: "Noto Serif Armenian", serif; }
+
+  h1, h2, .display {
+    font-family: 'Playfair Display', serif;
+  }
+  html[data-lang="hy"] h1, html[data-lang="hy"] h2, html[data-lang="hy"] .display {
+    font-family: 'Noto Serif Armenian', serif;
+  }
+
+  /* language visibility */
+  .lang-ru, .lang-hy { }
+  html[data-lang="ru"] .lang-hy { display: none !important; }
+  html[data-lang="hy"] .lang-ru { display: none !important; }
+
+  /* ── Lang toggle ─────────────────────────── */
+  .lang-toggle {
+    position: fixed; top: 18px; right: 18px; z-index: 50;
+    display: flex; background: rgba(22,21,19,0.92); border-radius: 30px;
+    padding: 4px; box-shadow: 0 6px 20px rgba(0,0,0,0.18);
+    backdrop-filter: blur(4px);
+  }
+  .lang-toggle button {
+    border: none; background: transparent; color: #cfccc3;
+    font-family: "Cormorant Garamond", serif; font-size: 14px; letter-spacing: 1.5px;
+    padding: 7px 15px; border-radius: 24px; cursor: pointer; transition: background .25s, color .25s;
+  }
+  .lang-toggle button.active { background: #f7f6f2; color: #161513; font-weight: 600; }
+  @media (max-width: 480px) { .lang-toggle { top: 12px; right: 12px; } .lang-toggle button { padding: 6px 12px; font-size: 13px; } }
+
+  .invite { max-width: 860px; margin: 0 auto; background: var(--card); }
+  @media (min-width: 900px) {
+    .invite { margin: 40px auto; border-radius: 4px; overflow: hidden; box-shadow: 0 30px 90px rgba(0,0,0,0.14); }
+  }
+
+  .reveal { opacity: 0; transform: translateY(26px); transition: opacity .9s cubic-bezier(.22,.61,.36,1), transform .9s cubic-bezier(.22,.61,.36,1); }
+  .reveal.is-visible { opacity: 1; transform: translateY(0); }
+  .reveal-zoom { opacity: 0; transform: scale(.94); transition: opacity .9s ease, transform .9s cubic-bezier(.22,.61,.36,1); }
+  .reveal-zoom.is-visible { opacity: 1; transform: scale(1); }
+  @media (prefers-reduced-motion: reduce) { .reveal, .reveal-zoom { opacity: 1; transform: none; transition: none; } }
+
+  /* ── sun ornament (arevakhach motif, echoes "Арев") ── */
+  .sun {
+    width: 22px; height: 22px; flex-shrink: 0;
+  }
+  .sun path, .sun circle { stroke: currentColor; fill: none; stroke-width: 1.1; }
+
+  .sep { display: flex; align-items: center; justify-content: center; gap: 16px; padding: 0 36px; color: var(--ash); }
+  .sep::before, .sep::after { content: ''; flex: 1; max-width: 120px; height: 1px; background: var(--line); }
+
+  .section { padding: 62px 36px; text-align: center; }
+  @media (max-width: 480px) { .section { padding: 46px 22px; } }
+
+  .eyebrow {
+    font-size: 13px; letter-spacing: 2.5px; color: var(--ash);
+    margin-bottom: 16px; display: inline-block; border-bottom: 1px solid var(--line); padding-bottom: 8px;
+  }
+  html[data-lang="hy"] .eyebrow { letter-spacing: 0.5px; }
+  .section-title { font-size: clamp(26px, 5vw, 36px); font-weight: 400; color: var(--ink); margin-bottom: 22px; }
+
+  /* ── Hero ─────────────────── */
+  .hero { position: relative; width: 100%; height: 82vh; min-height: 440px; max-height: 700px; overflow: hidden;
+    mask-image: linear-gradient(to bottom, black 58%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 58%, transparent 100%); background: #1c1b19; }
+  .hero img { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(100%) contrast(1.05); }
+  .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.62) 100%); }
+  .hero-text { position: absolute; bottom: 13%; left: 50%; transform: translateX(-50%); color: #fff; text-align: center; width: 90%; text-shadow: 0 2px 16px rgba(0,0,0,0.55); }
+  .hero-text .eyebrow { color: #e7e5df; border-color: rgba(255,255,255,0.35); }
+  .hero-text .names { font-size: clamp(42px, 10vw, 76px); font-weight: 400; line-height: 1.05; }
+  .hero-text .amp { font-style: italic; font-weight: 300; color: #cfccc3; }
+  .hero-text .date-line { margin-top: 16px; font-size: clamp(14px, 3vw, 17px); letter-spacing: 3px; opacity: .88; }
+
+  .greeting p { font-size: clamp(18px, 3.2vw, 22px); color: #3a382f; max-width: 560px; margin: 0 auto; font-style: italic; font-weight: 300; }
+  html[data-lang="hy"] .greeting p { font-style: normal; }
+  .greeting-rule { width: 40px; height: 1px; background: var(--ink); margin: 26px auto 0; }
+
+  /* ── Calendar ─────────────── */
+  .calendar-section { padding: 66px 36px; text-align: center; background: linear-gradient(180deg, #fbfaf7 0%, #efeeea 100%); }
+  .date-card { display: inline-flex; flex-direction: column; align-items: center; gap: 6px; padding: 42px 58px; background: var(--card); border: 1px solid var(--line); box-shadow: 0 14px 40px rgba(0,0,0,0.10); position: relative; }
+  @media (max-width: 480px) { .date-card { padding: 34px 30px; } }
+  .date-card::before { content: ''; position: absolute; inset: 9px; border: 1px solid var(--ink); opacity: .3; pointer-events: none; }
+  .date-sun { margin-bottom: 6px; color: var(--ash); }
+  .date-month { font-style: italic; font-size: 22px; letter-spacing: 4px; color: #4a473d; margin-bottom: 2px; }
+  html[data-lang="hy"] .date-month { font-style: normal; letter-spacing: 1px; }
+  .date-day { font-family: 'Playfair Display', serif; font-size: clamp(64px, 12vw, 96px); font-weight: 500; line-height: 1; color: var(--ink); }
+  html[data-lang="hy"] .date-day { font-family: 'Noto Serif Armenian', serif; }
+  .date-sub { font-size: 16px; letter-spacing: 2px; text-transform: none; color: var(--ash); margin-top: 6px; }
+  .date-sub .dot { color: var(--ash-soft); padding: 0 6px; }
+
+  /* ── Program timeline ─────────────── */
+  .schedule-wrap { max-width: 580px; margin: 0 auto; position: relative; text-align: left; }
+  .schedule-wrap::before { content: ''; position: absolute; left: 62px; top: 4px; bottom: 4px; width: 1px; background: var(--line); }
+  .schedule-item { display: flex; gap: 22px; align-items: flex-start; padding: 0 0 28px; position: relative; }
+  .schedule-item:last-child { padding-bottom: 0; }
+  .s-time { flex: 0 0 52px; font-family: 'Playfair Display', serif; font-size: 16px; color: var(--ash); padding-top: 2px; text-align: right; }
+  html[data-lang="hy"] .s-time { font-family: 'Noto Serif Armenian', serif; }
+  .s-dot-wrap { flex: 0 0 20px; display: flex; align-items: flex-start; justify-content: center; padding-top: 5px; position: relative; z-index: 1; }
+  .s-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--ink); box-shadow: 0 0 0 4px var(--card), 0 0 0 5px var(--line); }
+  .s-desc strong { display: block; font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 500; color: var(--ink); margin-bottom: 3px; }
+  html[data-lang="hy"] .s-desc strong { font-family: 'Noto Serif Armenian', serif; }
+  .s-desc span { font-size: 15px; color: var(--ash); }
+
+  /* ── Locations ─────────────── */
+  .loc-card { border-top: 1px solid var(--line); padding: 52px 36px; text-align: left; max-width: 640px; margin: 0 auto; }
+  .loc-card:first-of-type { border-top: none; }
+  @media (max-width: 480px) { .loc-card { padding: 40px 22px; } }
+  .loc-tag { font-size: 12px; letter-spacing: 2px; color: var(--ash); margin-bottom: 10px; }
+  .loc-name { font-family: 'Playfair Display', serif; font-size: clamp(21px, 4vw, 26px); font-weight: 500; color: var(--ink); margin-bottom: 8px; }
+  html[data-lang="hy"] .loc-name { font-family: 'Noto Serif Armenian', serif; }
+  .loc-address { font-size: 17px; color: #4a473d; margin-bottom: 16px; line-height: 1.55; }
+  .map-btn { display: inline-block; padding: 10px 26px; border-radius: 40px; border: 1px solid var(--ink); color: var(--ink); font-family: "Cormorant Garamond", serif; font-size: 15px; letter-spacing: 1.5px; text-decoration: none; transition: background .2s, color .2s; }
+  html[data-lang="hy"] .map-btn { font-family: 'Noto Serif Armenian', serif; }
+  .map-btn:hover { background: var(--ink); color: #fff; }
+  .map-frame { width: 100%; height: 200px; border: none; border-radius: 4px; margin-top: 18px; filter: grayscale(100%) contrast(1.05); transition: filter .5s ease; }
+  .map-frame:hover { filter: grayscale(0%); }
+
+  .loc-photo-wrap { margin: 0 0 42px; overflow: hidden; max-height: 320px; }
+  .loc-photo-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(100%); max-height: 320px; }
+
+  /* ── Countdown ─────────────── */
+  .countdown-section { background: linear-gradient(180deg, #f2f1ec 0%, #e6e4dd 100%); padding: 58px 16px 62px; text-align: center; overflow: hidden; }
+  .countdown-label { font-size: 12px; letter-spacing: 2.5px; color: var(--ash); margin-bottom: 30px; display: block; }
+  .countdown { display: flex; justify-content: center; align-items: center; gap: clamp(4px, 2vw, 14px); flex-wrap: nowrap; }
+  .countdown-item { text-align: center; }
+  .c-ring { width: clamp(44px, 15vw, 84px); height: clamp(44px, 15vw, 84px); border-radius: 50%; background: var(--card); border: 1px solid var(--ink); display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 18px rgba(0,0,0,0.10); flex-shrink: 0; }
+  .c-ring .num { font-family: 'Playfair Display', serif; font-size: clamp(15px, 4.5vw, 32px); font-weight: 500; color: var(--ink); line-height: 1; }
+  html[data-lang="hy"] .c-ring .num { font-family: 'Noto Serif Armenian', serif; }
+  .countdown-item .c-label { font-size: clamp(8px, 2.2vw, 12px); letter-spacing: 1px; color: var(--ash); margin-top: clamp(4px, 1.5vw, 10px); white-space: nowrap; }
+  .c-divider { color: var(--ash-soft); font-size: clamp(10px, 3vw, 18px); padding-bottom: clamp(12px, 4vw, 24px); flex-shrink: 0; }
+  .c-ring .num.pulse { animation: numPulse .4s ease; }
+  @keyframes numPulse { 0% { transform: scale(1); } 40% { transform: scale(1.18); color: var(--ash); } 100% { transform: scale(1); } }
+
+  /* ── About us ─────────────── */
+  .about-photo-wrap { width: 100%; max-height: 380px; overflow: hidden; }
+  .about-photo-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(100%); max-height: 380px; }
+  .about-text { max-width: 560px; margin: 0 auto; font-size: 18px; color: #3a382f; }
+  .about-text p + p { margin-top: 16px; }
+
+  /* ── RSVP ─────────────── */
+  .rsvp-wrap { padding: 60px 36px; }
+  @media (max-width: 480px) { .rsvp-wrap { padding: 46px 22px; } }
+  .rsvp-card { max-width: 560px; margin: 0 auto; background: var(--paper); border: 1px solid var(--line); border-radius: 4px; padding: 46px 38px; text-align: center; }
+  @media (max-width: 480px) { .rsvp-card { padding: 34px 22px; } }
+  .rsvp-title { font-family: 'Playfair Display', serif; font-size: clamp(24px, 4.5vw, 30px); font-weight: 500; color: var(--ink); line-height: 1.3; margin-bottom: 30px; }
+  html[data-lang="hy"] .rsvp-title { font-family: 'Noto Serif Armenian', serif; }
+  .rsvp-form { text-align: left; display: flex; flex-direction: column; gap: 22px; }
+  .rsvp-label { display: block; font-size: 15px; color: #333; margin-bottom: 9px; font-weight: 500; }
+  .rsvp-label .req { color: var(--ink); }
+  .rsvp-input, .rsvp-textarea { width: 100%; padding: 13px 16px; border: 1px solid var(--line); border-radius: 4px; font-family: inherit; font-size: 16px; background: #fff; transition: border-color .2s; }
+  .rsvp-textarea { resize: vertical; min-height: 64px; }
+  .rsvp-input:focus, .rsvp-textarea:focus { outline: none; border-color: var(--ink); }
+  .rsvp-radio-group { display: flex; flex-direction: column; gap: 12px; }
+  .rsvp-radio { display: flex; align-items: center; gap: 12px; font-size: 16px; color: #333; cursor: pointer; position: relative; }
+  .rsvp-radio input { position: absolute; opacity: 0; width: 0; height: 0; }
+  .rsvp-radio-dot { width: 19px; height: 19px; border-radius: 50%; border: 2px solid var(--line-strong); flex-shrink: 0; position: relative; transition: border-color .2s; }
+  .rsvp-radio input:checked + .rsvp-radio-dot::after { content: ''; position: absolute; inset: 3px; border-radius: 50%; background: var(--ink); }
+  .rsvp-extra-wrap { transition: opacity .3s ease, max-height .3s ease; overflow: hidden; max-height: 300px; }
+  .rsvp-extra-wrap.hidden { opacity: 0; max-height: 0; pointer-events: none; }
+  .rsvp-note { background: #fff; border-left: 3px solid var(--ink); padding: 14px 18px; border-radius: 2px; font-size: 14px; color: #4a473d; line-height: 1.55; }
+  .rsvp-submit { margin-top: 4px; padding: 15px; border: 1px solid var(--ink); border-radius: 40px; background: var(--ink); color: #fff; font-family: "Cormorant Garamond", serif; font-size: 16px; letter-spacing: 2px; cursor: pointer; transition: background .2s, color .2s, transform .1s; }
+  html[data-lang="hy"] .rsvp-submit { font-family: 'Noto Serif Armenian', serif; }
+  .rsvp-submit:hover { background: #fff; color: var(--ink); }
+  .rsvp-submit:active { transform: scale(.98); }
+  .rsvp-thanks { display: none; text-align: center; margin-top: 8px; font-size: 17px; color: var(--ink); }
+  .rsvp-thanks.show { display: block; }
+
+  /* ── Ending ─────────────── */
+  .ending-photo-wrap { position: relative; width: 78%; max-width: 560px; margin: 0 auto 40px; overflow: hidden; max-height: 380px;
+    mask-image: radial-gradient(ellipse 85% 85% at 50% 50%, black 50%, transparent 100%);
+    -webkit-mask-image: radial-gradient(ellipse 85% 85% at 50% 50%, black 50%, transparent 100%);
+    box-shadow: 0 18px 60px rgba(0,0,0,0.12); }
+  .ending-photo-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(100%); }
+  .ending-text { padding: 0 32px 66px; text-align: center; background: var(--card); }
+  .waiting { font-size: clamp(32px, 7vw, 52px); font-weight: 400; color: var(--ink); }
+  .couple-sig { margin-top: 10px; font-size: 18px; color: var(--ash); letter-spacing: 1.5px; }
+  .ending-rule { width: 40px; height: 1px; background: var(--ink); margin: 22px auto 0; }
+</style>
+<base target="_blank">
+</head>
+<body>
+
+<div class="lang-toggle">
+  <button type="button" id="btn-ru" class="active">РУС</button>
+  <button type="button" id="btn-hy">ՀԱՅ</button>
+</div>
+
+<div class="invite">
+
+  <!-- HERO -->
+  <div class="hero">
+    <img src="hero-photo.jpg" alt="Серго и Нуне" fetchpriority="high" decoding="async">
+    <div class="hero-overlay"></div>
+    <div class="hero-text">
+      <p class="eyebrow lang-ru">Свадебное приглашение</p>
+      <p class="eyebrow lang-hy">Հարսանեկան հրավեր</p>
+      <h1 class="names lang-ru">Серго <span class="amp">&amp;</span> Нуне</h1>
+      <h1 class="names lang-hy">Սերգո <span class="amp">&amp;</span> Նունե</h1>
+      <p class="date-line lang-ru">13 ноября 2026</p>
+      <p class="date-line lang-hy">13 նոյեմբերի, 2026</p>
+    </div>
+  </div>
+
+  <!-- GREETING -->
+  <div class="section greeting reveal">
+    <p class="lang-ru">Этот день станет началом нашей долгой и счастливой семейной жизни. Мы приглашаем Вас на торжество, посвящённое нашей свадьбе.</p>
+    <p class="lang-hy">Այս օրը մեր երկար և երջանիկ ընտանեկան կյանքի սկիզբը կլինի։ Մենք ձեզ հրավիրում ենք մեր հարսանեկան արարողությանը։</p>
+    <div class="greeting-rule"></div>
+  </div>
+
+  <div class="sep"><svg class="sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.2"/><path d="M12 1v3M12 20v3M23 12h-3M4 12H1M19.8 4.2l-2.1 2.1M6.3 17.7l-2.1 2.1M19.8 19.8l-2.1-2.1M6.3 6.3L4.2 4.2"/></svg></div>
+
+  <!-- SAVE THE DATE -->
+  <div class="calendar-section">
+    <span class="eyebrow lang-ru">Сохраните дату</span>
+    <span class="eyebrow lang-hy">Պահպանեք ամսաթիվը</span>
+    <div class="date-card reveal-zoom">
+      <svg class="sun date-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.2"/><path d="M12 1v3M12 20v3M23 12h-3M4 12H1M19.8 4.2l-2.1 2.1M6.3 17.7l-2.1 2.1M19.8 19.8l-2.1-2.1M6.3 6.3L4.2 4.2"/></svg>
+      <div class="date-month lang-ru">Ноябрь</div>
+      <div class="date-month lang-hy">Նոյեմբեր</div>
+      <div class="date-day">13</div>
+      <div class="date-sub lang-ru">Пятница<span class="dot">·</span>2026</div>
+      <div class="date-sub lang-hy">Ուրբաթ<span class="dot">·</span>2026</div>
+    </div>
+  </div>
+
+  <div class="sep"><svg class="sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.2"/><path d="M12 1v3M12 20v3M23 12h-3M4 12H1M19.8 4.2l-2.1 2.1M6.3 17.7l-2.1 2.1M19.8 19.8l-2.1-2.1M6.3 6.3L4.2 4.2"/></svg></div>
+
+  <!-- PROGRAM OF THE DAY -->
+  <div class="section reveal">
+    <span class="eyebrow lang-ru">Программа дня</span>
+    <span class="eyebrow lang-hy">Օրվա ծրագիրը</span>
+    <div class="schedule-wrap">
+      <div class="schedule-item">
+        <div class="s-time">10:30</div>
+        <div class="s-dot-wrap"><div class="s-dot"></div></div>
+        <div class="s-desc">
+          <strong class="lang-ru">Сборы у жениха</strong>
+          <strong class="lang-hy">Փեսայի տունը</strong>
+          <span class="lang-ru">Начало утренних приготовлений</span>
+          <span class="lang-hy">Առավոտյան նախապատրաստություն</span>
+        </div>
+      </div>
+      <div class="schedule-item">
+        <div class="s-time">12:00</div>
+        <div class="s-dot-wrap"><div class="s-dot"></div></div>
+        <div class="s-desc">
+          <strong class="lang-ru">Сборы у невесты</strong>
+          <strong class="lang-hy">Հարսնացուի տունը</strong>
+        </div>
+      </div>
+      <div class="schedule-item">
+        <div class="s-time">14:00</div>
+        <div class="s-dot-wrap"><div class="s-dot"></div></div>
+        <div class="s-desc">
+          <strong class="lang-ru">Венчание</strong>
+          <strong class="lang-hy">Եկեղեցի</strong>
+          <span class="lang-ru">Церковь Святой Гаяне, Эчмиадзин</span>
+          <span class="lang-hy">Սուրբ Գայանե եկեղեցի, Էջմիածին</span>
+        </div>
+      </div>
+      <div class="schedule-item">
+        <div class="s-time">16:30</div>
+        <div class="s-dot-wrap"><div class="s-dot"></div></div>
+        <div class="s-desc">
+          <strong class="lang-ru">Сбор гостей</strong>
+          <strong class="lang-hy">Հյուրերի հավաքույթ</strong>
+          <span class="lang-ru">Банкетный зал «Арев»</span>
+          <span class="lang-hy">«Արև» հանդիսությունների սրահ</span>
+        </div>
+      </div>
+      <div class="schedule-item">
+        <div class="s-time">17:00</div>
+        <div class="s-dot-wrap"><div class="s-dot"></div></div>
+        <div class="s-desc">
+          <strong class="lang-ru">Начало банкета</strong>
+          <strong class="lang-hy">Խնջույքի սկիզբը</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sep"><svg class="sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.2"/><path d="M12 1v3M12 20v3M23 12h-3M4 12H1M19.8 4.2l-2.1 2.1M6.3 17.7l-2.1 2.1M19.8 19.8l-2.1-2.1M6.3 6.3L4.2 4.2"/></svg></div>
+
+  <!-- LOCATIONS -->
+  <div class="section" style="padding-bottom: 8px;">
+    <span class="eyebrow lang-ru">Место проведения</span>
+    <span class="eyebrow lang-hy">Վայրը</span>
+  </div>
+
+  <div class="loc-card reveal">
+    <div class="loc-photo-wrap">
+      <img src="location-photo.jpg" alt="Церковь Святой Гаяне" loading="lazy" decoding="async">
+    </div>
+    <div class="loc-tag lang-ru">Венчание · 14:00</div>
+    <div class="loc-tag lang-hy">Եկեղեցի · 14:00</div>
+    <p class="loc-name lang-ru">Церковь Святой Гаяне</p>
+    <p class="loc-name lang-hy">Սուրբ Գայանե եկեղեցի</p>
+    <p class="loc-address lang-ru">Армения, город Эчмиадзин (Вагаршапат)</p>
+    <p class="loc-address lang-hy">Հայաստան, ք. Էջմիածին (Վաղարշապատ)</p>
+    <a href="https://yandex.ru/maps/?pt=44.291986,40.157419&z=16&l=map" class="map-btn" rel="noopener">
+      <span class="lang-ru">Маршрут на карте</span>
+      <span class="lang-hy">Երթուղին քարտեզի վրա</span>
+    </a>
+    <iframe class="map-frame" src="https://yandex.ru/map-widget/v1/?ll=44.291986%2C40.157419&z=16&pt=44.291986%2C40.157419%2Cpm2rdl" allowfullscreen loading="lazy"></iframe>
+  </div>
+
+  <div class="loc-card reveal">
+    <div class="loc-tag lang-ru">Банкет · 17:00</div>
+    <div class="loc-tag lang-hy">Խնջույք · 17:00</div>
+    <p class="loc-name lang-ru">Банкетный зал «Арев»</p>
+    <p class="loc-name lang-hy">«Արև» հանդիսությունների սրահ</p>
+    <p class="loc-address lang-ru">Армавирская область, Мецамор, 4-й квартал, 9/1</p>
+    <p class="loc-address lang-hy">Արմավիրի մարզ, Մեծամոր, 4-րդ թաղամաս, 9/1</p>
+    <a href="https://yandex.ru/maps/?text=Армения%2C%20Мецамор%2C%204%20квартал%2C%209%2F1" class="map-btn" rel="noopener">
+      <span class="lang-ru">Маршрут на карте</span>
+      <span class="lang-hy">Երթուղին քարտեզի վրա</span>
+    </a>
+    <iframe class="map-frame" src="https://yandex.ru/map-widget/v1/?text=Армения%2C%20Мецамор%2C%204%20квартал%2C%209%2F1&z=15" allowfullscreen loading="lazy"></iframe>
+  </div>
+
+  <div class="sep" style="margin-top: 56px;"><svg class="sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.2"/><path d="M12 1v3M12 20v3M23 12h-3M4 12H1M19.8 4.2l-2.1 2.1M6.3 17.7l-2.1 2.1M19.8 19.8l-2.1-2.1M6.3 6.3L4.2 4.2"/></svg></div>
+
+  <!-- COUNTDOWN -->
+  <div class="countdown-section">
+    <span class="countdown-label lang-ru">До торжества осталось</span>
+    <span class="countdown-label lang-hy">Մինչև տոնակատարությունը մնացել է</span>
+    <div class="countdown" id="countdown">
+      <div class="countdown-item reveal-zoom">
+        <div class="c-ring"><span class="num" id="cd-days">0</span></div>
+        <div class="c-label lang-ru">дней</div>
+        <div class="c-label lang-hy">օր</div>
+      </div>
+      <div class="c-divider">✦</div>
+      <div class="countdown-item reveal-zoom">
+        <div class="c-ring"><span class="num" id="cd-hours">0</span></div>
+        <div class="c-label lang-ru">часов</div>
+        <div class="c-label lang-hy">ժամ</div>
+      </div>
+      <div class="c-divider">✦</div>
+      <div class="countdown-item reveal-zoom">
+        <div class="c-ring"><span class="num" id="cd-minutes">0</span></div>
+        <div class="c-label lang-ru">минут</div>
+        <div class="c-label lang-hy">րոպե</div>
+      </div>
+      <div class="c-divider">✦</div>
+      <div class="countdown-item reveal-zoom">
+        <div class="c-ring"><span class="num" id="cd-seconds">0</span></div>
+        <div class="c-label lang-ru">секунд</div>
+        <div class="c-label lang-hy">վայրկյան</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT US -->
+  <div class="about-photo-wrap reveal-zoom">
+    <img src="about-photo.jpg" alt="Серго и Нуне" loading="lazy" decoding="async">
+  </div>
+  <div class="section reveal">
+    <span class="eyebrow lang-ru">О нас</span>
+    <span class="eyebrow lang-hy">Մեր մասին</span>
+    <div class="about-text">
+      <p class="lang-ru">Мы шли к этому дню каждый по своей дороге, пока они не стали одной. Впереди — целая жизнь, и нам хочется начать её именно с этого дня, вместе с самыми родными людьми.</p>
+      <p class="lang-ru">Спасибо, что вы часть нашей истории. Будем счастливы разделить этот день с вами.</p>
+      <p class="lang-hy">Մենք քայլել ենք դեպի այս օրը՝ յուրաքանչյուրս մեր ճանապարհով, մինչև դրանք դարձան մեկ ճանապարհ։ Առջևում մեզ սպասում է ամբողջ կյանքը, և մենք ուզում ենք այն սկսել հենց այս օրից՝ մեզ ամենամոտ մարդկանց հետ։</p>
+      <p class="lang-hy">Շնորհակալ ենք, որ դուք մեր պատմության մասն եք։ Ուրախ կլինենք կիսվել այս օրով ձեզ հետ։</p>
+    </div>
+  </div>
+
+  <div class="sep"><svg class="sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.2"/><path d="M12 1v3M12 20v3M23 12h-3M4 12H1M19.8 4.2l-2.1 2.1M6.3 17.7l-2.1 2.1M19.8 19.8l-2.1-2.1M6.3 6.3L4.2 4.2"/></svg></div>
+
+  <!-- RSVP -->
+  <div class="rsvp-wrap">
+    <div class="rsvp-card reveal">
+      <h3 class="rsvp-title">
+        <span class="lang-ru">Подтвердите<br>присутствие</span>
+        <span class="lang-hy">Հաստատեք<br>ձեր ներկայությունը</span>
+      </h3>
+      <form class="rsvp-form" id="rsvpForm">
+
+        <div>
+          <label class="rsvp-label" for="rsvp-name">
+            <span class="lang-ru">Ваше имя и фамилия</span>
+            <span class="lang-hy">Ձեր անունը և ազգանունը</span>
+            <span class="req"> *</span>
+          </label>
+          <input class="rsvp-input" type="text" id="rsvp-name" name="name" required
+                 placeholder="Имя и фамилия"
+                 data-ph-ru="Имя и фамилия" data-ph-hy="Անուն Ազգանուն">
+        </div>
+
+        <div>
+          <label class="rsvp-label">
+            <span class="lang-ru">Планируете ли Вы присутствовать на свадьбе?</span>
+            <span class="lang-hy">Կկարողանա՞ք ներկա գտնվել հարսանիքին</span>
+            <span class="req"> *</span>
+          </label>
+          <div class="rsvp-radio-group">
+            <label class="rsvp-radio">
+              <input type="radio" name="attending" value="yes" required>
+              <span class="rsvp-radio-dot"></span>
+              <span class="lang-ru">Да, с радостью!</span>
+              <span class="lang-hy">Այո, մեծ սիրով</span>
+            </label>
+            <label class="rsvp-radio">
+              <input type="radio" name="attending" value="no">
+              <span class="rsvp-radio-dot"></span>
+              <span class="lang-ru">К сожалению, не смогу</span>
+              <span class="lang-hy">Ցավոք, չեմ կարողանա</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="rsvp-extra-wrap hidden" id="rsvpExtraWrap">
+          <label class="rsvp-label" for="rsvp-family">
+            <span class="lang-ru">Если будете с парой / семьёй — укажите все имена</span>
+            <span class="lang-hy">Եթե գալիս եք զույգի/ընտանիքի հետ, նշեք բոլոր անունները</span>
+          </label>
+          <textarea class="rsvp-textarea" id="rsvp-family" name="family"
+                    placeholder="Имя и фамилия"
+                    data-ph-ru="Например: Анна Петросян, Давид Петросян" data-ph-hy="Օրինակ՝ Աննա Պետրոսյան, Դավիթ Պետրոսյան"></textarea>
+        </div>
+
+        <div class="rsvp-note">
+          <span class="lang-ru">Мы очень старались сделать праздник незабываемым, поэтому будем рады, если Вы подтвердите своё присутствие до <strong>1 ноября 2026</strong> года.</span>
+          <span class="lang-hy">Մենք մեծ ջանքեր ենք գործադրել արարողությունը հիշարժան դարձնելու համար, ուստի կուրախանանք, եթե հաստատեք ձեր ներկայությունը մինչև <strong>2026թ. նոյեմբերի 1-ը</strong>։</span>
+        </div>
+
+        <button type="submit" class="rsvp-submit">
+          <span class="lang-ru">✈ Отправить ответ</span>
+          <span class="lang-hy">✈ Ուղարկել պատասխանը</span>
+        </button>
+      </form>
+      <p class="rsvp-thanks" id="rsvpThanks"></p>
+    </div>
+  </div>
+
+  <!-- ENDING -->
+  <div class="ending-photo-wrap reveal-zoom">
+    <img src="ending-photo.jpg" alt="Ждём вас" loading="lazy" decoding="async">
+  </div>
+  <div class="ending-text reveal">
+    <h2 class="waiting lang-ru">Ждём вас!</h2>
+    <h2 class="waiting lang-hy">Սպասում ենք ձեզ!</h2>
+    <p class="couple-sig lang-ru">Серго и Нуне</p>
+    <p class="couple-sig lang-hy">Սերգո և Նունե</p>
+    <div class="ending-rule"></div>
+  </div>
+
+</div>
+
+<script>
+  // ── LANGUAGE TOGGLE ─────────────
+  (function () {
+    var html = document.documentElement;
+    var btnRu = document.getElementById('btn-ru');
+    var btnHy = document.getElementById('btn-hy');
+
+    function applyPlaceholders(lang) {
+      document.querySelectorAll('[data-ph-ru]').forEach(function (el) {
+        el.setAttribute('placeholder', lang === 'ru' ? el.dataset.phRu : el.dataset.phHy);
+      });
+    }
+
+    function setLang(lang) {
+      html.setAttribute('data-lang', lang);
+      html.setAttribute('lang', lang === 'ru' ? 'ru' : 'hy');
+      btnRu.classList.toggle('active', lang === 'ru');
+      btnHy.classList.toggle('active', lang === 'hy');
+      applyPlaceholders(lang);
+    }
+
+    btnRu.addEventListener('click', function () { setLang('ru'); });
+    btnHy.addEventListener('click', function () { setLang('hy'); });
+    applyPlaceholders('ru');
+  })();
+
+  // ── COUNTDOWN ─────────────
+  var targetDate = new Date('2026-11-13T17:00:00').getTime();
+  function updateCountdown() {
+    var now = new Date().getTime();
+    var diff = targetDate - now;
+    if (diff <= 0) {
+      ['cd-days','cd-hours','cd-minutes','cd-seconds'].forEach(function (id) { document.getElementById(id).textContent = '0'; });
+      return;
+    }
+    var d = Math.floor(diff / 86400000);
+    var h = Math.floor((diff % 86400000) / 3600000);
+    var m = Math.floor((diff % 3600000) / 60000);
+    var s = Math.floor((diff % 60000) / 1000);
+    setNum('cd-days', d); setNum('cd-hours', h);
+    setNum('cd-minutes', m); setNum('cd-seconds', s);
+  }
+  function setNum(id, val) {
+    var el = document.getElementById(id);
+    if (el.textContent !== String(val)) {
+      el.textContent = val;
+      el.classList.remove('pulse');
+      void el.offsetWidth;
+      el.classList.add('pulse');
+    }
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  // ── SCROLL REVEAL ─────────
+  document.addEventListener('DOMContentLoaded', function () {
+    var revealEls = document.querySelectorAll('.reveal, .reveal-zoom');
+    if ('IntersectionObserver' in window) {
+      var obs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+      revealEls.forEach(function (el) { obs.observe(el); });
+    } else {
+      revealEls.forEach(function (el) { el.classList.add('is-visible'); });
+    }
+  });
+
+  // ════════════════════════════════════════════════
+  //  RSVP FORM
+  // ════════════════════════════════════════════════
+  document.addEventListener('DOMContentLoaded', function () {
+    var form        = document.getElementById('rsvpForm');
+    var extraWrap   = document.getElementById('rsvpExtraWrap');
+    var thanks      = document.getElementById('rsvpThanks');
+    var submitBtn   = form.querySelector('.rsvp-submit');
+
+    // ⬇️ ВСТАВЬ СЮДА URL своего веб-приложения из Apps Script
+    var SCRIPT_URL = 'ВАШ_APPS_SCRIPT_URL';
+
+    document.querySelectorAll('input[name="attending"]').forEach(function (radio) {
+      radio.addEventListener('change', function () {
+        if (this.value === 'yes') {
+          extraWrap.classList.remove('hidden');
+        } else {
+          extraWrap.classList.add('hidden');
+          document.getElementById('rsvp-family').value = '';
+        }
+      });
+    });
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var lang = document.documentElement.getAttribute('data-lang');
+
+      var formData = new FormData(form);
+      var attending = formData.get('attending') || '';
+
+      var payload = {
+        name:       (formData.get('name') || '').trim(),
+        attendance: attending === 'yes' ? 'Да, с радостью' : 'Не сможет присутствовать',
+        family:     attending === 'yes' ? (formData.get('family') || '').trim() : '',
+        language:   lang
+      };
+
+      if (!payload.name) {
+        alert(lang === 'ru' ? 'Пожалуйста, укажите ваше имя' : 'Խնդրում ենք նշել ձեր անունը');
+        return;
+      }
+      if (!attending) {
+        alert(lang === 'ru' ? 'Пожалуйста, выберите, сможете ли вы прийти' : 'Խնդրում ենք ընտրել՝ կկարողանա՞ք գալ');
+        return;
+      }
+
+      var oldHTML = submitBtn.innerHTML;
+      submitBtn.textContent = lang === 'ru' ? 'Отправка...' : 'Ուղարկվում է...';
+      submitBtn.disabled = true;
+
+      fetch(SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      }).then(function () {
+        form.style.display = 'none';
+        thanks.textContent = lang === 'ru' ? 'Спасибо! Ваш ответ получен ❤️' : 'Շնորհակալություն։ Ձեր պատասխանը ստացվել է ❤️';
+        thanks.classList.add('show');
+      }).catch(function (err) {
+        console.error('Ошибка отправки:', err);
+        alert(lang === 'ru' ? 'Что-то пошло не так. Попробуйте ещё раз.' : 'Ինչ-որ բան այն չէ։ Խնդրում ենք փորձել կրկին։');
+        submitBtn.innerHTML = oldHTML;
+        submitBtn.disabled = false;
+      });
+    });
+  });
+</script>
+
+</body>
+</html>

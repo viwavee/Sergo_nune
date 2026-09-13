@@ -124,15 +124,15 @@
   .hero-text { position: absolute; inset: 0; color: #fff; text-shadow: 0 2px 16px rgba(0,0,0,0.55); }
   .mono { position: absolute; font-family: 'Playfair Display', serif; font-weight: 700; line-height: 1; color: #fff; font-size: clamp(70px, 16vw, 150px); }
   html[data-lang="hy"] .mono { font-family: 'Noto Serif Armenian', serif; }
-  .mono-a { top: 8%; left: 6%; }
-  .mono-b { bottom: 14%; right: 7%; }
+  .mono-a { top: 26%; left: 20%; }
+  .mono-b { bottom: 28%; right: 22%; }
   .vert-names { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(90deg); white-space: nowrap; font-family: 'Playfair Display', serif; font-size: clamp(18px, 3.6vw, 24px); letter-spacing: 1.5px; font-weight: 700; color: #f7f3ee; }
   html[data-lang="hy"] .vert-names { font-family: 'Noto Serif Armenian', serif; letter-spacing: 0.5px; }
   .hero-date { position: absolute; bottom: 6%; left: 50%; transform: translateX(-50%); font-size: clamp(15px, 3vw, 19px); letter-spacing: 3px; font-weight: 600; }
   @media (max-width: 480px) {
     .mono { font-size: clamp(56px, 22vw, 96px); }
-    .mono-a { top: 6%; left: 5%; }
-    .mono-b { bottom: 16%; right: 5%; }
+    .mono-a { top: 24%; left: 16%; }
+    .mono-b { bottom: 26%; right: 18%; }
   }
 
   .greeting p { font-size: clamp(18px, 3.2vw, 22px); color: var(--ink); max-width: 560px; margin: 0 auto; font-style: normal; font-weight: 500; }
@@ -153,7 +153,7 @@
   html[data-lang="hy"] .cal-cell { font-family: 'Noto Serif Armenian', serif; }
   .cal-cell.empty { visibility: hidden; }
   .cal-cell.highlight { font-weight: 700; }
-  .cal-heart { position: absolute; inset: -6px; color: var(--ink); pointer-events: none; }
+  .cal-heart { position: absolute; top: 50%; left: 50%; width: clamp(24px, 6.5vw, 32px); height: clamp(24px, 6.5vw, 32px); transform: translate(-50%, -50%); color: var(--ink); pointer-events: none; }
   .cal-heart path { fill: none; stroke: currentColor; stroke-width: 1.3; }
   .cal-sub { margin-top: 22px; font-size: 16px; letter-spacing: 2px; color: var(--ash); font-weight: 500; }
   .cal-sub .dot { color: var(--ash-soft); padding: 0 6px; }
@@ -623,17 +623,43 @@
     var audio = document.getElementById('bgMusic');
     var btn = document.getElementById('musicToggle');
     var playing = false;
+    var autoTried = false;
 
-    btn.addEventListener('click', function () {
-      if (playing) {
-        audio.pause();
-        btn.classList.remove('playing');
-      } else {
-        audio.play().catch(function () { /* файл музыки ещё не загружен */ });
+    function startMusic() {
+      if (playing) return;
+      audio.play().then(function () {
+        playing = true;
         btn.classList.add('playing');
-      }
-      playing = !playing;
+      }).catch(function () { /* браузер заблокировал — подождём касания */ });
+    }
+
+    function stopMusic() {
+      audio.pause();
+      playing = false;
+      btn.classList.remove('playing');
+    }
+
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      if (playing) { stopMusic(); } else { startMusic(); }
     });
+
+    // Пытаемся включить сразу
+    startMusic();
+
+    // Если браузер заблокировал автозапуск — включаем при первом касании/клике где угодно на странице
+    function firstInteraction() {
+      if (!autoTried) {
+        autoTried = true;
+        startMusic();
+      }
+      document.removeEventListener('touchstart', firstInteraction);
+      document.removeEventListener('click', firstInteraction);
+      document.removeEventListener('scroll', firstInteraction);
+    }
+    document.addEventListener('touchstart', firstInteraction, { passive: true });
+    document.addEventListener('click', firstInteraction);
+    document.addEventListener('scroll', firstInteraction, { passive: true });
   })();
 
   // ── COUNTDOWN ─────────────

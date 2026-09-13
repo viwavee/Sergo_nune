@@ -145,15 +145,15 @@
   @media (max-width: 480px) { .cal-card { padding: 32px 16px 26px; } }
   .cal-month { font-family: 'Playfair Display', serif; font-weight: 700; font-size: clamp(28px, 6vw, 38px); letter-spacing: 4px; color: var(--ink); margin-bottom: 24px; }
   html[data-lang="hy"] .cal-month { font-family: 'Noto Serif Armenian', serif; letter-spacing: 1px; }
-  .cal-weekdays, .cal-days { display: grid; grid-template-columns: repeat(7, 1fr); width: 100%; }
+  .cal-weekdays, .cal-days { display: grid; grid-template-columns: repeat(7, 1fr); width: 100%; column-gap: 4px; }
   .cal-weekdays { margin-bottom: 14px; }
   .cal-weekdays span { font-size: clamp(11px, 2.6vw, 13px); font-weight: 600; letter-spacing: 0.5px; color: var(--ash); }
-  .cal-days { row-gap: clamp(10px, 2.8vw, 18px); }
-  .cal-cell { position: relative; font-family: 'Playfair Display', serif; font-weight: 500; font-size: clamp(14px, 3.4vw, 17px); color: var(--ink); display: flex; align-items: center; justify-content: center; height: clamp(28px, 7vw, 34px); }
+  .cal-days { row-gap: clamp(6px, 2vw, 12px); }
+  .cal-cell { position: relative; aspect-ratio: 1 / 1; font-family: 'Playfair Display', serif; font-weight: 500; font-size: clamp(14px, 3.4vw, 17px); color: var(--ink); display: flex; align-items: center; justify-content: center; }
   html[data-lang="hy"] .cal-cell { font-family: 'Noto Serif Armenian', serif; }
   .cal-cell.empty { visibility: hidden; }
-  .cal-cell.highlight { font-weight: 700; }
-  .cal-heart { position: absolute; top: 50%; left: 50%; width: clamp(32px, 9vw, 44px); height: clamp(32px, 9vw, 44px); transform: translate(-50%, -50%); color: var(--ink); pointer-events: none; }
+  .cal-cell.highlight { font-weight: 700; font-size: clamp(11px, 2.7vw, 14px); }
+  .cal-heart { position: absolute; top: 50%; left: 50%; width: 96%; height: 96%; transform: translate(-50%, -50%); color: var(--ink); pointer-events: none; }
   .cal-heart path { fill: none; stroke: currentColor; stroke-width: 1.3; }
   .cal-sub { margin-top: 22px; font-size: 16px; letter-spacing: 2px; color: var(--ash); font-weight: 500; }
   .cal-sub .dot { color: var(--ash-soft); padding: 0 6px; }
@@ -335,7 +335,7 @@
         <span class="cal-cell">12</span>
         <span class="cal-cell highlight">
           13
-          <svg class="cal-heart" viewBox="0 0 40 40"><path d="M20 30 C10 22 6 16 6 11 C6 6 10 3 14 5 C17 6.5 19 9 20 11 C21 9 23 6.5 26 5 C30 3 34 6 34 11 C34 16 30 22 20 30 Z"/></svg>
+          <svg class="cal-heart" viewBox="0 0 44 44"><path d="M22 37 C10 28 4 20 4 13 C4 6 10 3 15 5 C18 6.5 20 9 22 13 C24 9 26 6.5 29 5 C34 3 40 6 40 13 C40 20 34 28 22 37 Z"/></svg>
         </span>
         <span class="cal-cell">14</span>
         <span class="cal-cell">15</span>

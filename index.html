@@ -172,8 +172,8 @@
   @keyframes numPulse { 0% { transform: scale(1); } 40% { transform: scale(1.18); color: var(--ash); } 100% { transform: scale(1); } }
 
   /* ── About us ─────────────── */
-  .about-photo-wrap { width: 100%; max-height: 380px; overflow: hidden; }
-  .about-photo-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: center 78%; display: block; filter: grayscale(100%); max-height: 380px; }
+  .about-photo-wrap { width: 100%; max-height: 380px; overflow: hidden; background: var(--paper-dim); display: flex; align-items: center; justify-content: center; }
+  .about-photo-wrap img { width: 100%; height: 100%; object-fit: contain; display: block; filter: grayscale(100%); max-height: 380px; }
   .about-text { max-width: 560px; margin: 0 auto; font-size: 18px; color: #3a382f; }
   .about-text p + p { margin-top: 16px; }
 
@@ -207,10 +207,12 @@
 
   /* ── Ending ─────────────── */
   .ending-photo-wrap { position: relative; width: 78%; max-width: 560px; margin: 0 auto 40px; overflow: hidden; max-height: 380px;
+    background: var(--paper-dim);
+    display: flex; align-items: center; justify-content: center;
     mask-image: radial-gradient(ellipse 85% 85% at 50% 50%, black 50%, transparent 100%);
     -webkit-mask-image: radial-gradient(ellipse 85% 85% at 50% 50%, black 50%, transparent 100%);
     box-shadow: 0 18px 60px rgba(0,0,0,0.12); }
-  .ending-photo-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: center 82%; display: block; filter: grayscale(100%); }
+  .ending-photo-wrap img { width: 100%; height: 100%; object-fit: contain; display: block; filter: grayscale(100%); }
   .ending-text { padding: 0 32px 66px; text-align: center; background: var(--card); }
   .waiting { font-size: clamp(32px, 7vw, 52px); font-weight: 400; color: var(--ink); }
   .couple-sig { margin-top: 10px; font-size: 18px; color: var(--ash); letter-spacing: 1.5px; }
@@ -352,11 +354,11 @@
     <p class="loc-name lang-hy">«Արև» հանդիսությունների սրահ</p>
     <p class="loc-address lang-ru">Армавирская область, Мецамор, 4-й квартал, 9/1</p>
     <p class="loc-address lang-hy">Արմավիրի մարզ, Մեծամոր, 4-րդ թաղամաս, 9/1</p>
-    <a href="https://yandex.ru/maps/?pt= 44.132460,40.143187,pm2rdm&z=16&l=map&text=Армения%2C%20Мецамор%2C%204%20квартал%2C%209%2F1" class="map-btn" rel="noopener">
+    <a href="https://yandex.ru/maps/?pt=44.132460,40.143187,pm2rdl&z=17&l=map" class="map-btn" rel="noopener">
       <span class="lang-ru">Маршрут на карте</span>
       <span class="lang-hy">Երթուղին քարտեզի վրա</span>
     </a>
-    <iframe class="map-frame" src="https://yandex.ru/map-widget/v1/?ll=44.1164%2C40.1428&z=16&pt=44.132460%2C40.143187%2Cpm2rdm" allowfullscreen loading="lazy"></iframe>
+    <iframe class="map-frame" src="https://yandex.ru/map-widget/v1/?ll=44.132460%2C40.143187&z=17&pt=44.132460%2C40.143187%2Cpm2rdl" allowfullscreen loading="lazy"></iframe>
   </div>
 
   <div class="sep" style="margin-top: 56px;"><svg class="sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.2"/><path d="M12 1v3M12 20v3M23 12h-3M4 12H1M19.8 4.2l-2.1 2.1M6.3 17.7l-2.1 2.1M19.8 19.8l-2.1-2.1M6.3 6.3L4.2 4.2"/></svg></div>
